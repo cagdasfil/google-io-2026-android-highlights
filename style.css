@@ -410,6 +410,14 @@ figcaption {
 
 .ai-studio-visual {
   width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.split-visual {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .check-list {
@@ -612,6 +620,10 @@ figcaption {
   }
 
   .ai-studio-visual {
+    width: 100%;
+  }
+
+  .split-visual {
     width: 100%;
   }
 }
