@@ -41,44 +41,9 @@
             content-forward Google Play distribution model.
           </p>
           <div class="hero-actions" aria-label="Page shortcuts">
-            <a class="button primary" href="#overview">Explore highlights</a>
+            <a class="button primary" href="#compose">Explore highlights</a>
             <a class="button secondary" href="#play">See Play changes</a>
           </div>
-        </div>
-      </section>
-
-      <section id="overview" class="section overview" aria-labelledby="overview-title">
-        <div class="section-heading">
-          <p class="eyebrow">Executive summary</p>
-          <h2 id="overview-title">The new Android development center of gravity</h2>
-          <p>
-            The announcements directly relevant to Android app development and Google Play
-            distribution cluster into six major shifts: Compose-first UI, agent-accessible apps,
-            on-device AI, Android 17 platform changes, agentic developer tools, and AI-powered
-            discovery and monetization.
-          </p>
-        </div>
-        <div class="stat-grid">
-          <article>
-            <span>01</span>
-            <strong>Compose First</strong>
-            <p>Compose becomes the default direction for Android UI APIs, tooling, samples, and guidance.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <strong>Agentic Android</strong>
-            <p>AppFunctions exposes app capabilities to assistants through structured, developer-defined functions.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <strong>Hybrid AI</strong>
-            <p>Gemini Nano 4, ML Kit GenAI, LiteRT-LM, and Firebase AI Logic split work across device and cloud.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <strong>Adaptive Baseline</strong>
-            <p>Android 17 raises expectations for performance, privacy, large screens, and modern graphics.</p>
-          </article>
         </div>
       </section>
 
@@ -86,6 +51,9 @@
         <div class="feature-copy">
           <p class="eyebrow">1. A new development paradigm</p>
           <h2 id="compose-title">Compose First is now the default Android UI path</h2>
+          <figure class="feature-visual wide">
+            <img src="assets/compose-first.png" alt="Compose First banner for Android UI development">
+          </figure>
           <p>
             Google positions Jetpack Compose as the main destination for Android UI development,
             moving it beyond a modern alternative to XML and View-based UI. New APIs, libraries,
@@ -129,15 +97,15 @@
             convert View-based areas when those features are touched.
           </p>
         </div>
-        <figure class="feature-visual wide">
-          <img src="assets/compose-first.png" alt="Compose First banner for Android UI development">
-        </figure>
       </section>
 
       <section id="agents" class="section feature feature-right" aria-labelledby="agents-title">
         <div class="feature-copy">
           <p class="eyebrow">2. Agentic Android</p>
           <h2 id="agents-title">Apps become callable by agents through AppFunctions</h2>
+          <figure class="feature-visual icon-panel">
+            <img src="assets/appfunctions.svg" alt="AppFunctions illustration">
+          </figure>
           <p>
             Android is moving toward an ecosystem where AI agents can proactively complete tasks across
             apps while developers define what those agents can access and execute.
@@ -150,15 +118,15 @@
             <li><strong>Agent tooling:</strong> Android CLI 1.0, the <code>android studio</code> command, Android skills, and Journeys give agents project creation, deployment, semantic IDE context, Compose preview rendering, and UI test execution.</li>
           </ul>
         </div>
-        <figure class="feature-visual icon-panel">
-          <img src="assets/appfunctions.svg" alt="AppFunctions illustration">
-        </figure>
       </section>
 
       <section id="ai" class="section feature feature-left" aria-labelledby="ai-title">
         <div class="feature-copy">
           <p class="eyebrow">3. On-device and hybrid AI</p>
           <h2 id="ai-title">Gemini and Android meet across device, cloud, and orchestration</h2>
+          <figure class="feature-visual">
+            <img src="assets/gemini-nano-4.jpg" alt="Gemini Nano 4 preview shown with a phone interface">
+          </figure>
           <p>
             Google presents Android as an intelligence platform where AI can run on-device, in the
             cloud, or through a hybrid routing layer tuned for privacy, latency, cost, capability,
@@ -183,23 +151,20 @@
             </p>
           </div>
         </div>
-        <figure class="feature-visual">
-          <img src="assets/gemini-nano-4.jpg" alt="Gemini Nano 4 preview shown with a phone interface">
-        </figure>
       </section>
 
       <section id="platform" class="section split-band" aria-labelledby="platform-title">
         <div class="split-copy">
           <p class="eyebrow">4. System performance and architecture</p>
           <h2 id="platform-title">Android 17 tightens performance, privacy, and large-screen expectations</h2>
+          <div class="split-visual">
+            <img src="assets/android-17-developer-preview-logo.svg" alt="Android 17 Developer Preview logo">
+          </div>
           <p>
             Android 17 introduces system-level and developer-facing changes for smoother UI, stronger
             privacy, better large-screen behavior, and more reliable app performance under modern mobile
             workloads.
           </p>
-        </div>
-        <div class="split-visual">
-          <img src="assets/android-17-logo.webp" alt="Android 17 logo">
         </div>
         <div class="timeline">
           <article>
@@ -229,6 +194,9 @@
         <div class="feature-copy">
           <p class="eyebrow">5. AI-powered developer tools and migration</p>
           <h2 id="tools-title">Developer tools move from assistance to agentic execution</h2>
+          <figure class="feature-visual ai-studio-visual">
+            <img src="assets/ai-studio.png" alt="Google AI Studio at I/O 2026 feature overview">
+          </figure>
           <p>
             Android developer tools are expanding from code completion into planning, generation,
             testing, debugging, migration, profiling, and release preparation with deeper Android context.
@@ -260,9 +228,6 @@
             </article>
           </div>
         </div>
-        <figure class="feature-visual">
-          <img src="assets/ai-studio.png" alt="Google AI Studio at I/O 2026 feature overview">
-        </figure>
       </section>
 
       <section id="play" class="section play-section" aria-labelledby="play-title">
@@ -275,21 +240,27 @@
           </p>
         </div>
         <div class="play-layout">
-          <figure class="play-visual">
-            <img src="assets/play-shorts.webp" alt="Animated Play Shorts surface inside Google Play">
-          </figure>
           <div class="play-cards">
             <article>
               <h3>Play Shorts</h3>
               <p>Full-screen, vertical short-form video in Google Play gives users a fast view of an app's look, feel, and functionality before install.</p>
+              <figure class="inline-media">
+                <img src="assets/play-shorts.webp" alt="Animated Play Shorts surface inside Google Play">
+              </figure>
             </article>
             <article>
               <h3>Gemini-powered discovery</h3>
               <p>Users can discover apps and games through Gemini on Android and Web, with later entertainment surfacing and deep links into app experiences.</p>
+              <figure class="inline-media">
+                <img src="assets/app-discovery-gemini.gif" alt="Animated app discovery in Gemini">
+              </figure>
             </article>
             <article>
               <h3>Ask Play</h3>
               <p>An AI overlay turns discovery into natural-language conversation, supports follow-up questions, and summarizes complex searches on results pages.</p>
+              <figure class="inline-media">
+                <img src="assets/ask-play.webp" alt="Ask Play conversational app discovery interface">
+              </figure>
             </article>
             <article>
               <h3>Engage SDK expansion</h3>
@@ -309,28 +280,16 @@
             <article>
               <h3>AI-powered reporting</h3>
               <p>New metrics cover total Play visibility, traffic sources, cart conversion, subscriber tenure, churn reasons, Q&A-style analysis, chart descriptions, and recommendations.</p>
+              <figure class="inline-media">
+                <img src="assets/interactive-q-and-a.webp" alt="Interactive Q and A reporting interface in Play Console">
+              </figure>
             </article>
           </div>
-        </div>
-        <div class="play-media-grid" aria-label="Google Play discovery visuals">
-          <figure>
-            <img src="assets/app-discovery-gemini.gif" alt="Animated app discovery in Gemini">
-            <figcaption>Gemini-powered discovery brings apps into assistant-style flows on Android and Web.</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/ask-play.webp" alt="Ask Play conversational app discovery interface">
-            <figcaption>Ask Play turns app search into a contextual, natural-language conversation.</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/interactive-q-and-a.webp" alt="Interactive Q and A reporting interface in Play Console">
-            <figcaption>Interactive Q&A-style reporting helps teams inspect performance shifts and recommendations.</figcaption>
-          </figure>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Built from the local Markdown brief: <span>Google I/O 2026 Android Highlights</span></p>
       <a href="#top">Back to top</a>
     </footer>
   </body>
