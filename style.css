@@ -545,6 +545,51 @@ figcaption {
   padding: 1.1rem;
 }
 
+.dates-section {
+  padding-top: 86px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(23, 32, 42, 0.08);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid rgba(23, 32, 42, 0.08);
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.45;
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: rgba(26, 115, 232, 0.08);
+  color: var(--dark);
+  font-size: 0.82rem;
+  font-weight: 860;
+  text-transform: uppercase;
+}
+
+td strong {
+  color: var(--dark);
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .site-footer {
   display: flex;
   justify-content: flex-end;

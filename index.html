@@ -287,6 +287,57 @@
           </div>
         </div>
       </section>
+
+      <section id="dates" class="section dates-section" aria-labelledby="dates-title">
+        <div class="section-heading">
+          <p class="eyebrow">Timeline</p>
+          <h2 id="dates-title">Important Android and Google Play dates</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Date / period</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Who is affected?</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>June 2026</strong></td>
+                <td><strong>Engage SDK content appears in store listings</strong></td>
+                <td>Apps using the Engage SDK</td>
+                <td>No extra action if already integrated; otherwise consider Engage SDK integration for re-engagement.</td>
+              </tr>
+              <tr>
+                <td><strong>August 2026</strong></td>
+                <td><strong>Google Play target API 36 requirement</strong></td>
+                <td>Android apps submitting new apps or updates to Google Play</td>
+                <td>Prepare <code>targetSdkVersion</code> / <code>targetSdk</code> for <strong>API 36</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>August 2026</strong></td>
+                <td><strong>Large-screen orientation and resizability changes</strong></td>
+                <td>Apps targeting SDK 36 and running on tablets, foldables, and large screens</td>
+                <td>Make the app adaptive across screen sizes, orientations, and resizing states. Temporary opt-out exists for API 36.</td>
+              </tr>
+              <tr>
+                <td><strong>October 28, 2026</strong></td>
+                <td><strong>Contacts Permissions policy</strong></td>
+                <td>Apps requesting broad contacts access</td>
+                <td>Replace unnecessary broad contacts permission usage with the <strong>Android Contact Picker</strong> where possible.</td>
+              </tr>
+              <tr>
+                <td><strong>October 28, 2026</strong></td>
+                <td><strong>Location Permissions policy update</strong></td>
+                <td>Apps using precise location</td>
+                <td>Justify precise location usage with minimum scope; prefer lower-scope options such as location buttons where applicable.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
