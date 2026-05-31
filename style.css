@@ -75,6 +75,7 @@ code {
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: 0.55rem;
   min-height: 38px;
   color: var(--dark);
   font-size: clamp(1.02rem, 1.8vw, 1.32rem);
@@ -83,13 +84,10 @@ code {
   white-space: nowrap;
 }
 
-.brand::before {
-  width: 12px;
-  height: 12px;
-  margin-right: 0.55rem;
-  border-radius: 50%;
-  background: conic-gradient(from 90deg, var(--blue), var(--green), var(--yellow), var(--red), var(--blue));
-  content: "";
+.brand img {
+  width: 1.35em;
+  height: 1.35em;
+  object-fit: contain;
 }
 
 nav {
