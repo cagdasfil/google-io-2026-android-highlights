@@ -55,6 +55,32 @@ code {
   padding: 0.08rem 0.28rem;
 }
 
+pre {
+  overflow-x: auto;
+  margin: 0.9rem 0;
+  border: 1px solid rgba(26, 115, 232, 0.14);
+  border-radius: 8px;
+  background: #f7faff;
+  padding: 1rem;
+}
+
+pre code {
+  display: block;
+  border: 0;
+  background: transparent;
+  color: #174ea6;
+  line-height: 1.55;
+  padding: 0;
+}
+
+blockquote {
+  margin: 0.85rem 0;
+  border-left: 4px solid var(--blue);
+  color: var(--dark);
+  font-weight: 720;
+  padding: 0.15rem 0 0.15rem 1rem;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -246,6 +272,12 @@ h3 {
   margin: 0 0 0.55rem;
   color: var(--dark);
   font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.94rem;
   line-height: 1.25;
 }
 
@@ -472,6 +504,23 @@ figcaption {
   padding: 1.1rem;
 }
 
+.highlight-callout {
+  border-color: rgba(23, 32, 42, 0.1);
+  background: #fff1f0;
+  box-shadow: 0 12px 32px rgba(18, 28, 45, 0.06);
+}
+
+.highlight-callout h3 {
+  color: var(--dark);
+  font-size: 1.04rem;
+}
+
+.highlight-callout p {
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 400;
+}
+
 .split-band {
   display: block;
 }
@@ -541,6 +590,44 @@ figcaption {
   background: rgba(255, 255, 255, 0.07);
   box-shadow: none;
   padding: 1.1rem;
+}
+
+.action-note {
+  margin-top: 1rem;
+  border: 1px solid rgba(251, 188, 4, 0.24);
+  border-radius: var(--radius);
+  background: rgba(251, 188, 4, 0.12);
+  padding: 0.95rem;
+}
+
+.action-note h4 {
+  color: #fde293;
+}
+
+.action-note p,
+.action-note li {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
+}
+
+.action-note strong {
+  color: #fff;
+}
+
+.action-note p + p {
+  margin-top: 0.65rem;
+}
+
+.action-note blockquote {
+  margin: 0.7rem 0;
+  border-left-color: #fde293;
+  color: #fff;
+  font-size: 0.94rem;
+}
+
+.action-note ul {
+  margin: 0.45rem 0 0;
+  padding-left: 1.1rem;
 }
 
 .dates-section {

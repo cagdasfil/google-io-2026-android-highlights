@@ -6,12 +6,14 @@
     <title>Google I/O 2026 Android Highlights</title>
     <meta
       name="description"
-      content="A single-page summary of Google I/O 2026 Android announcements across Compose, agentic Android, on-device AI, Android 17, tools, and Google Play."
+      content="A single-page summary of Google I/O 2026 Android announcements across Compose, agentic Android, Android 17, and Google Play."
     >
     <meta property="og:title" content="Google I/O 2026 Android Highlights">
-    <meta property="og:description" content="AI-native Android development, Compose-first UI, AppFunctions, Gemini Nano 4, Android 17, and Google Play evolution.">
+    <meta property="og:description" content="AI-native Android development, Compose-first UI, AppFunctions, Android 17, and Google Play evolution.">
     <meta property="og:image" content="assets/io26-hero.jpg">
     <link rel="preload" href="assets/io26-hero.jpg" as="image">
+    <link rel="icon" href="assets/android-logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/android-logo.png">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -23,9 +25,7 @@
       <nav>
         <a href="#compose">Compose</a>
         <a href="#agents">Agents</a>
-        <a href="#ai">AI</a>
         <a href="#platform">Platform</a>
-        <a href="#tools">Tools</a>
         <a href="#play">Google Play</a>
       </nav>
     </header>
@@ -40,7 +40,7 @@
           <h1 id="page-title">Android moves into an AI-native development era.</h1>
           <p class="hero-copy">
             Google I/O 2026 reframes Android mobile development around Jetpack Compose,
-            agentic workflows, adaptive experiences, on-device and hybrid AI, and a more
+            agentic workflows, adaptive experiences, platform architecture, and a more
             content-forward Google Play distribution model.
           </p>
           <div class="hero-actions" aria-label="Page shortcuts">
@@ -71,34 +71,15 @@
                 Fragments, RecyclerView, and ViewPager are treated as complete.
               </p>
             </article>
-            <article>
-              <h3>Tooling shifts to Compose</h3>
-              <p>
-                New Android Studio UI tools are built for Jetpack Compose. View-era tools like the
-                Navigation Editor and Layout Editor remain available, but also move into maintenance mode.
-              </p>
-            </article>
-            <article>
-              <h3>Styles API and richer UI primitives</h3>
-              <p>
-                Recent Compose updates improve layouts, input, graphics, animation, Material components,
-                shared element transitions, adaptive UI patterns, and reusable appearance logic through
-                the highlighted Styles API.
-              </p>
-            </article>
-            <article>
-              <h3>Adaptive UI by default</h3>
-              <p>
-                Compose becomes the core engine for phones, foldables, tablets, and large-screen surfaces,
-                supported by experimental Grid and FlexBox layouts, Navigation 3, non-touch input work,
-                and CameraX improvements.
-              </p>
-            </article>
           </div>
-          <p class="note">
-            For existing apps, Google recommends gradual migration: build new features with Compose and
-            convert View-based areas when those features are touched.
-          </p>
+          <div class="callout highlight-callout">
+            <h3>Key Considerations</h3>
+            <p>
+              Existing XML/View-based applications do not necessarily need to be fully rewritten. However,
+              developing new features with Compose and gradually migrating existing screens when business
+              value exists would be a healthier long-term approach.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -118,39 +99,26 @@
             <li><strong>Android MCP model:</strong> apps can behave like on-device Model Context Protocol servers that share tools, services, and data with the system and agents.</li>
             <li><strong>Controlled integration:</strong> developers can expose domain actions such as creating notes, retrieving saved content, starting workflows, or performing app-specific operations.</li>
             <li><strong>Preview status:</strong> AppFunctions is in experimental preview, with Gemini integration in private preview for trusted testers.</li>
-            <li><strong>Agent tooling:</strong> Android CLI 1.0, the <code>android studio</code> command, Android skills, and Journeys give agents project creation, deployment, semantic IDE context, Compose preview rendering, and UI test execution.</li>
           </ul>
-        </div>
-      </section>
-
-      <section id="ai" class="section feature feature-left" aria-labelledby="ai-title">
-        <div class="feature-copy">
-          <p class="eyebrow">3. On-device and hybrid AI</p>
-          <h2 id="ai-title">Gemini and Android meet across device, cloud, and orchestration</h2>
-          <figure class="feature-visual">
-            <img src="assets/gemini-nano-4.jpg" alt="Gemini Nano 4 preview shown with a phone interface">
-          </figure>
-          <p>
-            Google presents Android as an intelligence platform where AI can run on-device, in the
-            cloud, or through a hybrid routing layer tuned for privacy, latency, cost, capability,
-            and availability.
-          </p>
-          <div class="pill-list">
-            <span>Gemini Nano 4 Preview</span>
-            <span>ML Kit GenAI Prompt API</span>
-            <span>Structured Output API</span>
-            <span>Prefix Caching</span>
-            <span>LiteRT-LM</span>
-            <span>Firebase AI Logic Hybrid Inference</span>
-            <span>ADK for Android</span>
-            <span>A2UI + Compose Renderer</span>
-          </div>
-          <div class="callout">
-            <h3>Production direction</h3>
+          <div class="callout highlight-callout">
+            <h3>Use Case</h3>
             <p>
-              ML Kit GenAI becomes the path from AICore prototyping toward production on-device AI.
-              Hybrid inference modes such as <code>PREFER_ON_DEVICE</code>, <code>PREFER_CLOUD</code>,
-              <code>ONLY_ON_DEVICE</code>, and <code>ONLY_CLOUD</code> let apps decide where work runs.
+              A user could say to Gemini:
+            </p>
+            <blockquote>
+              "Find an evening flight from Istanbul to Izmir next Friday."
+            </blockquote>
+            <p>The app could expose the following AppFunctions:</p>
+            <pre><code>searchFlights(
+    origin: String,
+    destination: String,
+    departureDate: LocalDate,
+    preferredTimeRange: TimeRange?
+)</code></pre>
+            <p>
+              The flight search experience can be initiated without opening the app. The user intent is
+              extracted from natural language, and the app can direct the user straight to the relevant
+              results screen or offer flow.
             </p>
           </div>
         </div>
@@ -158,7 +126,7 @@
 
       <section id="platform" class="section split-band" aria-labelledby="platform-title">
         <div class="split-copy">
-          <p class="eyebrow">4. System performance and architecture</p>
+          <p class="eyebrow">3. System performance and architecture</p>
           <h2 id="platform-title">Android 17 tightens performance, privacy, and large-screen expectations</h2>
           <div class="split-visual">
             <img src="assets/android-17-developer-preview-logo.svg" alt="Android 17 Developer Preview logo">
@@ -171,10 +139,6 @@
         </div>
         <div class="timeline">
           <article>
-            <h3>Resource and runtime work</h3>
-            <p>New app memory limits, optimization tooling, a lock-free MessageQueue, and garbage collection changes target runaway memory use, UI contention, and disruptive pauses.</p>
-          </article>
-          <article>
             <h3>Privacy-reducing APIs</h3>
             <p>The contact picker and eyedropper API help apps perform common tasks without broad sensitive permissions or unnecessary data access.</p>
           </article>
@@ -186,56 +150,19 @@
             <h3>Adaptive-first baseline</h3>
             <p>For apps targeting API 37, the temporary opt-out from orientation and resizability restrictions on large-screen devices is removed.</p>
           </article>
-          <article>
-            <h3>Graphics direction</h3>
-            <p>Vulkan, emulator improvements, and GPU tooling remain central for high-performance graphics and testing across device form factors.</p>
-          </article>
         </div>
-      </section>
-
-      <section id="tools" class="section feature feature-right" aria-labelledby="tools-title">
-        <div class="feature-copy">
-          <p class="eyebrow">5. AI-powered developer tools and migration</p>
-          <h2 id="tools-title">Developer tools move from assistance to agentic execution</h2>
-          <figure class="feature-visual ai-studio-visual">
-            <img src="assets/ai-studio.png" alt="Google AI Studio at I/O 2026 feature overview">
-          </figure>
+        <div class="callout highlight-callout">
+          <h3>Key Considerations</h3>
           <p>
-            Android developer tools are expanding from code completion into planning, generation,
-            testing, debugging, migration, profiling, and release preparation with deeper Android context.
+            Android 17 compatibility should not be treated only as a "target SDK update". Large-screen
+            support, foldable devices, tablet experience, OTP flows must be evaluated together.
           </p>
-          <div class="detail-grid compact">
-            <article>
-              <h3>AI Studio Build Mode</h3>
-              <p>Generates native Android apps from prompts using Kotlin, Jetpack Compose, and recommended APIs, with browser previews and export to Android Studio.</p>
-            </article>
-            <article>
-              <h3>Testing and publishing flow</h3>
-              <p>Generated apps can be shared through Google Play Console internal testing, reducing friction from idea to testable build.</p>
-            </article>
-            <article>
-              <h3>Android Studio Agent Mode</h3>
-              <p>Agent skills, project-specific context, and parallel conversations support focused threads for planning, testing, and documentation.</p>
-            </article>
-            <article>
-              <h3>New Project Agent</h3>
-              <p>Uses multi-step plans, self-corrects build errors, configures dependencies, and scaffolds large-screen-friendly layouts and navigation.</p>
-            </article>
-            <article>
-              <h3>Migration Assistant</h3>
-              <p>Ports apps from iOS, React Native, or web stacks to native Android by mapping features, converting assets, and applying Compose and Jetpack practices.</p>
-            </article>
-            <article>
-              <h3>Performance and optimization</h3>
-              <p>R8 Configuration Analyzer, Android Performance Analyzer, ProfilingManager, LeakCanary integration, and Android Bench improve app quality and model evaluation.</p>
-            </article>
-          </div>
         </div>
       </section>
 
       <section id="play" class="section play-section" aria-labelledby="play-title">
         <div class="section-heading">
-          <p class="eyebrow">6. Google Play and discovery evolution</p>
+          <p class="eyebrow">4. Google Play and discovery evolution</p>
           <h2 id="play-title">Google Play becomes more visual, conversational, and AI-assisted</h2>
           <p>
             Google Play is evolving into a content-forward platform where discovery, store operations,
@@ -250,6 +177,15 @@
               <figure class="inline-media">
                 <img src="assets/play-shorts.webp" alt="Animated Play Shorts surface inside Google Play">
               </figure>
+              <div class="action-note">
+                <h4>Action</h4>
+                <p>Prepare short, vertical, mobile-friendly videos of around 10-30 seconds.</p>
+                <p>Example content ideas:</p>
+                <ul>
+                  <li>One or two of the most-used features</li>
+                  <li>Conversion-focused scenarios such as campaigns, loyalty, payments, or reservations</li>
+                </ul>
+              </div>
             </article>
             <article>
               <h3>Gemini-powered discovery</h3>
@@ -257,6 +193,21 @@
               <figure class="inline-media">
                 <img src="assets/app-discovery-gemini.gif" alt="Animated app discovery in Gemini">
               </figure>
+              <div class="action-note">
+                <h4>Action</h4>
+                <p>
+                  Users may no longer search only with short keywords such as "flight app" or
+                  "banking app." They may ask Gemini something like:
+                </p>
+                <blockquote>
+                  "Recommend an app that helps me track my flight and check in online during an
+                  international trip."
+                </blockquote>
+                <p>
+                  Therefore, app descriptions should not only be keyword-focused, but also clearly
+                  explain <strong>user problems and usage scenarios</strong>.
+                </p>
+              </div>
             </article>
             <article>
               <h3>Ask Play</h3>
@@ -264,10 +215,10 @@
               <figure class="inline-media">
                 <img src="assets/ask-play.webp" alt="Ask Play conversational app discovery interface">
               </figure>
-            </article>
-            <article>
-              <h3>Engage SDK expansion</h3>
-              <p>App content can appear across store listing integrations, tablet Collections, and more than 80 Play markets to re-engage users beyond the app icon.</p>
+              <div class="action-note">
+                <h4>Action</h4>
+                <p>The action item for Gemini-powered discovery also applies to Ask Play.</p>
+              </div>
             </article>
             <article>
               <h3>AI-powered store operations</h3>
@@ -275,10 +226,14 @@
               <figure class="inline-media">
                 <img src="assets/prepopulate-store.webp" alt="Google Play Console pre-populated store listing workflow">
               </figure>
-            </article>
-            <article>
-              <h3>Games, revenue, and retention</h3>
-              <p>Play Games Sidekick expands with AI tips and rewards, while delayed charging, account recovery periods, and subscription management APIs improve monetization and retention flows.</p>
+              <div class="action-note">
+                <h4>Action</h4>
+                <p>
+                  Move store listing content into a structured file format. This allows content to be
+                  provided to Play Console through CSV or Google Sheets, enabling Gemini to generate
+                  localized listing drafts for different languages.
+                </p>
+              </div>
             </article>
             <article>
               <h3>AI-powered reporting</h3>
@@ -336,6 +291,12 @@
                 <td><strong>Location Permissions policy update</strong></td>
                 <td>Apps using precise location</td>
                 <td>Justify precise location usage with minimum scope; prefer lower-scope options such as location buttons where applicable.</td>
+              </tr>
+              <tr>
+                <td><strong>August 2027</strong></td>
+                <td><strong>Google Play target API 37 requirement</strong></td>
+                <td>Android apps submitting new apps or updates to Google Play</td>
+                <td>Prepare for <code>targetSdk</code> 37; large-screen orientation and resizability opt-out is removed.</td>
               </tr>
             </tbody>
           </table>

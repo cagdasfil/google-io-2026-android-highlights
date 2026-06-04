@@ -1,62 +1,80 @@
-At Google I/O 2026, the Android mobile development ecosystem has undergone a major transformation, shifting toward an **AI-native Android development model** centered on Jetpack Compose, agentic workflows, adaptive mobile experiences, on-device/hybrid AI, and Google Play distribution/monetization improvements.
+At Google I/O 2026, the Android mobile development ecosystem has undergone a major transformation, shifting toward an **AI-native Android development model** centered on Jetpack Compose, agentic workflows, adaptive mobile experiences, system architecture, and Google Play distribution improvements.
 
 The following is a comprehensive summary of the major developments that are directly relevant to Android mobile app development and Google Play app distribution:
 
 ### 1. A New Development Paradigm: "Compose First"
 Google has officially declared a **"Compose First" approach** for Android UI development. This means Compose is no longer positioned only as a modern alternative to XML/View-based UI, but as the default direction for Android UI APIs, libraries, tooling, samples, and guidance going forward.
 *   **Maintenance Mode for Views:** Traditional View components that Compose replaces, especially components in the `android.widget` package, are now considered to be in **maintenance mode**. Google states that these components are not being deprecated or removed, but they will receive critical bug fixes rather than new feature development. View-based Jetpack libraries such as Fragments, RecyclerView, and ViewPager are also treated as complete and will primarily receive critical fixes.
-*   **Tooling and Guidance Shift:** New Android Studio UI tools will be built for Jetpack Compose only. Existing View-based tools such as the Navigation Editor and Layout Editor remain available, but they are also in maintenance mode. Documentation, codelabs, samples, and best-practice guidance will increasingly focus on Compose-first development.
-*   **Latest Compose Innovations:** The latest Compose releases strengthen the toolkit with a richer feature set for layouts, input, graphics, animation, Material Design components, shared element transitions, enhanced input support, and adaptive UI patterns. The newly highlighted **Styles API** helps developers separate UI behavior from appearance and create more reusable design logic, making Compose more suitable for large, design-system-driven apps.
-*   **Adaptive UI as the Default Direction:** Compose is also positioned as the main engine for building adaptive Android apps across phones, foldables, tablets, and large-screen mobile surfaces. New experimental layouts such as Grid and FlexBox, Navigation 3, improved non-touch input support, and CameraX improvements help apps behave correctly across many screen sizes and input modes.
-*   **AI-Assisted Migration:** To help teams move existing apps gradually, Google points developers toward an **XML to Compose migration skill** and Android Studio agent workflows. The recommended migration strategy is not necessarily a full rewrite; instead, Google suggests building all new features with Compose and converting existing View-based features when they are touched.
+
+## Key Considerations
+
+Existing XML/View-based applications do not necessarily need to be fully rewritten. However, developing new features with Compose and gradually migrating existing screens when business value exists would be a healthier long-term approach.
 
 ### 2. Agentic Android and the AppFunctions API
 Android is becoming an ecosystem where AI agents can proactively complete tasks across different applications, while developers retain more control over how their apps expose capabilities to the system.
 *   **AppFunctions API:** AppFunctions is a new Android platform API with an accompanying Jetpack library. It allows an app to expose selected capabilities as callable functions that can be used by agents and assistants. Google describes this as **Android MCP**, because apps can behave like on-device Model Context Protocol servers that share tools, services, and data with the system and agents.
 *   **Controlled Agent Integration:** Instead of relying only on screen automation, AppFunctions gives developers a more structured way to define what an agent can do inside an app. This can make agent actions more reliable, more testable, and easier to constrain than generic UI navigation. For example, an app can expose a specific function such as creating a note, retrieving saved content, starting a workflow, or performing a domain-specific action.
 *   **Experimental Preview and Early Access:** AppFunctions is currently available as an experimental preview, while Gemini integration is in a private preview with trusted testers. Google also provides API guidance, a sample, a skill for generating AppFunctions, and a test agent for experimenting and debugging AppFunctions in a simulated agent environment.
-*   **Android CLI & Knowledge Base:** Android CLI is now stable at version 1.0 and is designed to make Android development easier for any AI agent, LLM, or coding environment. It gives agents programmatic access to Android tasks such as creating projects, deploying to Android virtual devices, and using Android-specific knowledge.
-*   **Android Studio Capabilities for Agents:** The new `android studio` command lets agents connect to Android Studio’s deeper IDE capabilities, including semantic symbol resolution, file analysis for errors and warnings, finding declarations/usages, dependency version lookup, and rendering Jetpack Compose previews. This bridges lightweight agent workflows with Android Studio’s mature project understanding.
-*   **Agent Skills and Journeys:** Android skills provide modular, Android-specific instructions that guide agents through specialized workflows. Journeys enable end-to-end UI test execution under developer direction, helping agents validate user flows rather than only generating code.
+## Use Case
 
-### 3. On-Device and Hybrid AI
-The integration of Gemini and generative AI into Android has reached a new level, with Google positioning Android as an intelligence platform where AI can run on-device, in the cloud, or through a hybrid orchestration layer.
-*   **Gemini Nano 4 Preview:** Google announced a preview of the next generation of Gemini Nano, referred to as **Gemini Nano 4**, available through the AICore Developer Preview. It is intended for on-device generative AI use cases such as data extraction, summarization, and other privacy-sensitive or latency-sensitive features.
-*   **ML Kit GenAI Prompt API:** Developers can move from prototyping with AICore Developer Preview toward production-ready on-device AI features using the ML Kit GenAI Prompt API. Google says Gemini Nano 4 will launch on flagship devices later in the year, making this API path important for developers planning production integrations.
-*   **Structured Output:** The upcoming Structured Output API will allow developers to define object classes and receive more reliable structured responses from on-device prompts. This is especially important for production features where free-form text is too unpredictable, such as extracting fields from a receipt, classifying content, or generating app-specific data objects.
-*   **Prefix Caching:** Prefix caching improves on-device inference performance by storing and reusing intermediate LLM state for recurring prompt prefixes. This can reduce inference time when an app repeatedly sends prompts with a shared system instruction, context, or formatting template.
-*   **LiteRT-LM for Custom Models:** For highly customized or niche cases, Google highlights LiteRT-LM as a way to bring fine-tuned small language models to Android. This is useful when a developer needs a specialized model rather than a general Gemini Nano capability.
-*   **Hybrid Inference:** Firebase AI Logic Hybrid Inference introduces routing between on-device models and cloud models. Developers can specify orchestration modes such as `PREFER_ON_DEVICE`, `PREFER_CLOUD`, `ONLY_ON_DEVICE`, or `ONLY_CLOUD`, allowing apps to balance privacy, latency, cost, capability, and availability.
-*   **ADK for Android and A2UI:** The Agent Development Kit for Android is available for experimentation and helps build multi-agent workflows across on-device and cloud models. A2UI allows agents to "speak UI," and the upcoming Jetpack Compose Renderer can render A2UI messages as native Compose UI components, making agent-generated interactions feel more Android-native.
+A user could say to Gemini:
 
-### 4. System Performance and Architecture (Android 17)
+> “Find an evening flight from Istanbul to Izmir next Friday.”
+
+The app could expose the following AppFunctions:
+
+```kotlin
+searchFlights(
+    origin: String,
+    destination: String,
+    departureDate: LocalDate,
+    preferredTimeRange: TimeRange?
+)
+```
+
+The flight search experience can be initiated without opening the app. The user intent is extracted from natural language, and the app can direct the user straight to the relevant results screen or offer flow.
+
+### 3. System Performance and Architecture (Android 17)
 Android 17 introduces system-level and developer-facing changes designed to support smoother UI, stronger privacy, better large-screen behavior, and more reliable app performance under modern mobile workloads.
-*   **Memory Management:** Android 17 introduces new app memory limits and related optimization tooling to reduce the impact of runaway memory usage. This is especially important as AI, media, large-screen, and multi-device experiences increase pressure on device resources.
-*   **Lock-Free MessageQueue:** Android 17 includes a new lock-free MessageQueue implementation, intended to reduce contention and improve responsiveness in UI-heavy scenarios. Google highlights this alongside broader runtime improvements to help deliver smoother user interfaces.
-*   **Garbage Collection Improvements:** Android 17 also includes garbage collection changes with more frequent, less intensive young-generation collections. The goal is to reduce disruptive pauses and improve system-wide stability during interactive workloads.
 *   **Privacy-Reducing APIs:** The new contact picker and eyedropper API help apps accomplish common tasks without requesting broader sensitive permissions or unnecessary user data access. This aligns with Android’s ongoing direction of reducing permission surface area.
 *   **Behavior Changes for Targeting Android 17:** Developers preparing for Android 17/API 37 need to review behavior changes such as background audio hardening, SMS OTP protection, mandatory large-screen resizability, certificate transparency by default, and restricted local network access.
 *   **Adaptive-First Baseline:** Android 17 raises the quality bar for large screens. For apps targeting API 37, the temporary opt-out from orientation and resizability restrictions on large-screen devices is removed, meaning apps must be able to adapt across different display sizes.
-*   **Vulkan and GPU Direction:** Google continues to push modern graphics and GPU capabilities across the Android ecosystem. Vulkan remains a key API for high-performance graphics workloads, while related tooling and emulator improvements help developers test across more graphics configurations and mobile form factors.
 
-### 5. AI-Powered Developer Tools and Migration
-Google’s Android developer tools are moving from AI-assisted coding toward **agentic development**, where agents can plan, generate, test, debug, migrate, and prepare apps with deeper Android-specific context.
-*   **AI Studio "Build Mode":** Google AI Studio can now generate native Android apps from a prompt in the browser. These apps use Android development best practices such as Kotlin, Jetpack Compose, and recommended APIs. Developers can preview them in an embedded Android Emulator, deploy to physical devices through ADB over USB, export projects as ZIP files, and continue advanced work in Android Studio.
-*   **Internal Testing and Play Publishing Flow:** AI Studio can also help share generated apps for testing through Google Play Console’s internal testing track. This lowers the friction from idea to prototype to testable Android build.
-*   **Android Studio Agent Mode:** Android Studio’s agent capabilities are expanding beyond code completion. Agent skills ground LLMs in Android/Firebase workflows, architecture patterns, and project-specific best practices. Parallel conversations allow developers to run multiple agent threads, such as one for testing, one for planning, and one for documentation.
-*   **New Project Agent:** Android Studio’s New Project Agent has evolved into a more autonomous app scaffolding tool. It can use a multi-step execution plan, self-correct build errors, configure dependencies across files, and scaffold large-screen-friendly layouts, navigation, and components.
-*   **iOS to Android Migration Assistant:** The Migration Assistant is designed to port apps from platforms such as iOS, React Native, or web frameworks to native Android. It can map features, convert assets like storyboards and SVGs, and implement Android best practices using Jetpack Compose and recommended Jetpack libraries. Google frames this as a way to turn weeks of manual porting into a more streamlined agentic workflow.
-*   **R8 Configuration Analyzer:** The R8 Configuration Analyzer helps identify keep rules that unnecessarily bloat binaries. This can reduce app size and improve optimization by helping developers understand which rules are needed and which may be overly conservative.
-*   **Performance Tooling:** Android Performance Analyzer adds AI-assisted trace analysis and automated SQL query generation to help identify performance bottlenecks. Android Studio also highlights ProfilingManager and integrated LeakCanary support to streamline memory leak detection and profiling.
-*   **Android Bench:** Android Bench is a leaderboard for evaluating LLMs on Android development challenges. Google is using it to encourage more useful model improvements and to help developers compare remote and local/open-weight models, including Gemma 4, for Android coding assistance.
+## Key Considerations
 
-### 6. Google Play and Discovery Evolution
+Android 17 compatibility should not be treated only as a “target SDK update”. Large-screen support, foldable devices, tablet experience, OTP flows must be evaluated together.
+
+### 4. Google Play and Discovery Evolution
 Google Play is evolving into a more content-forward and AI-assisted platform, helping users discover apps through richer media, conversational search, Gemini surfaces, and personalized ecosystem integrations.
 *   **Play Shorts:** Play Shorts is a full-screen, vertical, short-form video feed inside Google Play. It gives users a quick sense of an app’s look, feel, and functionality before they install it. It is rolling out to users in the US and selected developers first, with broader expansion planned.
+
+## Action
+
+Prepare short, vertical, mobile-friendly videos of around 10–30 seconds.
+Example content ideas:
+- One or two of the most-used features
+- Conversion-focused scenarios such as campaigns, loyalty, payments, or reservations
+
 *   **Gemini-Powered Discovery:** Google is enabling app discovery in the Gemini app on Android and Web. This means users can discover apps and games through assistant-style interactions rather than only through traditional Play Store browsing or keyword search. Later in the year, Gemini is also expected to surface entertainment content and deep-link users into app experiences.
+
+## Action
+
+Users may no longer search only with short keywords such as “flight app” or “banking app.” They may ask Gemini something like:
+
+> “Recommend an app that helps me track my flight and check in online during an international trip.”
+
+Therefore, app descriptions should not only be keyword-focused, but also clearly explain **user problems and usage scenarios**.
+
 *   **Ask Play:** Ask Play is an AI-powered overlay that turns app discovery into a natural-language conversation. It understands the context of a user’s question, adapts to follow-up questions, and recommends relevant apps or games. Ask Play highlights can also summarize complex searches directly on the search results page.
-*   **Engage SDK Expansion:** Engage SDK surfaces deliver app content across the ecosystem, including new store listing integration, tablet surfaces such as home screen Collections, and more than 80 Play markets. For developers, this means content can re-engage existing users beyond the app icon and standard listing.
-*   **Play Games Sidekick:** For games, Play Games Sidekick provides an in-game overlay with AI-generated tips, rewards, achievements, and social features. It has already appeared in over 100 titles and is expanding globally to participating titles.
+
+## Action
+
+The action item for Gemini-powered discovery also applies to Ask Play.
+
 *   **AI-Powered Store Operations:** Gemini models in Play Console can pre-populate localized store listings from structured files such as CSVs or Google Sheets. They can also help translate subscription benefits, create custom store listings from keyword recommendations, and support agentic catalog management for one-time products, including bulk price changes, SKU imports, and metadata configuration.
-*   **Revenue and Retention Improvements:** Google Play is adding behind-the-scenes revenue optimization such as delayed charging for low-risk failed payments, extended account recovery periods, and upcoming in-app subscription management APIs that allow users to change plans or accept downgrade offers during cancellation flows.
+
+## Action
+
+Move store listing content into a structured file format. This allows content to be provided to Play Console through CSV or Google Sheets, enabling Gemini to generate localized listing drafts for different languages.
+
 *   **AI-Powered Reporting:** New metrics and insights help developers measure total Play visibility, understand traffic sources, analyze cart conversion, inspect subscriber tenure/churn reasons, and ask interactive Q&A-style questions about performance shifts. Gemini-powered chart descriptions and recommendations are expanding across Play Console pages.
